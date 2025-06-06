@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask from Navodayan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #006699;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .search-bar {
+      text-align: center;
+      margin: 20px 0;
+    }
+    #searchInput {
+      width: 50%;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #006699;
+      border-radius: 8px;
+    }
+    #clearBtn {
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #006699;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    #clearBtn:hover {
+      background-color: #004466;
+    }
+    .container {
+      padding: 20px;
+    }
+    .category {
+      background: #e6f2ff;
+      padding: 10px;
+      margin: 10px 0;
+      border-left: 5px solid #006699;
+    }
+    #noResult {
+      display: none;
+      text-align: center;
+      color: red;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background: #003d66;
+      color: white;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Ask from Navodayan</h1>
+    <p>By Rudra — A Future IITian & CEO 🚀</p>
+  </header>
+
+  <!-- Search Box -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔍 Search for a question..." onkeyup="searchQuestions()">
+    <button id="clearBtn" onclick="clearSearch()">Clear</button>
+  </div>
+
+  <div class="container" id="qaContainer">
+    <div class="category">
+      <h3>📘 IIT Prep</h3>
+      <p>What is Newton's Third Law? — "Every action has an equal and opposite reaction."</p>
+    </div>
+
+    <div class="category">
+      <h3>💼 Business & CEO Skills</h3>
+      <p>How to develop leadership? — Start with small decisions. Learn from books. Lead yourself first.</p>
+    </div>
+
+    <div class="category">
+      <h3>🔥 Motivation</h3>
+      <p>Can I really crack IIT and become a CEO? — YES. With consistency, smart planning, and belief.</p>
+    </div>
+  </div>
+
+  <p id="noResult">No results found.</p>
+
+  <footer>
+    &copy; 2025 Ask from Navodayan | Created by Rudra
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function searchQuestions() {
+      const input = document.getElementById("searchInput").value.toLowerCase();
+      const categories = document.getElementsByClassName("category");
+      let found = false;
+
+      for (let i = 0; i < categories.length; i++) {
+        const text = categories[i].innerText.toLowerCase();
+        if (text.includes(input)) {
+          categories[i].style.display = "block";
+          found = true;
+        } else {
+          categories[i].style.display = "none";
+        }
+      }
+
+      document.getElementById("noResult").style.display = found ? "none" : "block";
+    }
+
+    function clearSearch() {
+      document.getElementById("searchInput").value = "";
+      const categories = document.getElementsByClassName("category");
+      for (let i = 0; i < categories.length; i++) {
+        categories[i].style.display = "block";
+      }
+      document.getElementById("noResult").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
